@@ -1,0 +1,16 @@
+C:\Users\Gustavo\source\repos\AVyoutube\bin\Debug\net8.0-windows\AVyoutube.exe
+C:\Users\Gustavo\source\repos\AVyoutube\bin\Debug\net8.0-windows\AVyoutube.deps.json
+C:\Users\Gustavo\source\repos\AVyoutube\bin\Debug\net8.0-windows\AVyoutube.runtimeconfig.json
+C:\Users\Gustavo\source\repos\AVyoutube\bin\Debug\net8.0-windows\AVyoutube.dll
+C:\Users\Gustavo\source\repos\AVyoutube\bin\Debug\net8.0-windows\AVyoutube.pdb
+C:\Users\Gustavo\source\repos\AVyoutube\obj\Debug\net8.0-windows\AVyoutube.Form1.resources
+C:\Users\Gustavo\source\repos\AVyoutube\obj\Debug\net8.0-windows\AVyoutube.csproj.GenerateResource.cache
+C:\Users\Gustavo\source\repos\AVyoutube\obj\Debug\net8.0-windows\AVyoutube.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Gustavo\source\repos\AVyoutube\obj\Debug\net8.0-windows\AVyoutube.AssemblyInfoInputs.cache
+C:\Users\Gustavo\source\repos\AVyoutube\obj\Debug\net8.0-windows\AVyoutube.AssemblyInfo.cs
+C:\Users\Gustavo\source\repos\AVyoutube\obj\Debug\net8.0-windows\AVyoutube.csproj.CoreCompileInputs.cache
+C:\Users\Gustavo\source\repos\AVyoutube\obj\Debug\net8.0-windows\AVyoutube.dll
+C:\Users\Gustavo\source\repos\AVyoutube\obj\Debug\net8.0-windows\refint\AVyoutube.dll
+C:\Users\Gustavo\source\repos\AVyoutube\obj\Debug\net8.0-windows\AVyoutube.pdb
+C:\Users\Gustavo\source\repos\AVyoutube\obj\Debug\net8.0-windows\AVyoutube.genruntimeconfig.cache
+C:\Users\Gustavo\source\repos\AVyoutube\obj\Debug\net8.0-windows\ref\AVyoutube.dll
