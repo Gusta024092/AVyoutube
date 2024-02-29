@@ -28,114 +28,122 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             txtLink = new TextBox();
             label1 = new Label();
             btnAnalisar = new Button();
             cmbResolucao = new ComboBox();
             groupFiltros = new GroupBox();
+            label2 = new Label();
+            btnBaixarSemEscolha = new Button();
             btnBaixarComEscolha = new Button();
             progressBar1 = new ProgressBar();
             listBox1 = new ListBox();
-            btnBaixarSemEscolha = new Button();
+            arquivoToolStripMenuItem = new ToolStripMenuItem();
+            sairToolStripMenuItem = new ToolStripMenuItem();
+            menuStrip1 = new MenuStrip();
             groupFiltros.SuspendLayout();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // txtLink
             // 
-            txtLink.Location = new Point(50, 12);
+            resources.ApplyResources(txtLink, "txtLink");
             txtLink.Name = "txtLink";
-            txtLink.Size = new Size(715, 23);
-            txtLink.TabIndex = 0;
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(12, 20);
+            resources.ApplyResources(label1, "label1");
             label1.Name = "label1";
-            label1.Size = new Size(32, 15);
-            label1.TabIndex = 1;
-            label1.Text = "Link:";
             // 
             // btnAnalisar
             // 
-            btnAnalisar.Location = new Point(771, 12);
+            resources.ApplyResources(btnAnalisar, "btnAnalisar");
             btnAnalisar.Name = "btnAnalisar";
-            btnAnalisar.Size = new Size(75, 23);
-            btnAnalisar.TabIndex = 2;
-            btnAnalisar.Text = "Analisar Formatos";
             btnAnalisar.UseVisualStyleBackColor = true;
             btnAnalisar.Click += btnAnalisar_Click;
             // 
             // cmbResolucao
             // 
+            resources.ApplyResources(cmbResolucao, "cmbResolucao");
             cmbResolucao.FormattingEnabled = true;
-            cmbResolucao.Location = new Point(6, 35);
             cmbResolucao.Name = "cmbResolucao";
-            cmbResolucao.Size = new Size(319, 23);
-            cmbResolucao.TabIndex = 3;
             // 
             // groupFiltros
             // 
+            resources.ApplyResources(groupFiltros, "groupFiltros");
+            groupFiltros.Controls.Add(label2);
             groupFiltros.Controls.Add(btnBaixarSemEscolha);
             groupFiltros.Controls.Add(cmbResolucao);
             groupFiltros.Controls.Add(btnBaixarComEscolha);
-            groupFiltros.Location = new Point(50, 112);
             groupFiltros.Name = "groupFiltros";
-            groupFiltros.Size = new Size(331, 145);
-            groupFiltros.TabIndex = 4;
             groupFiltros.TabStop = false;
-            groupFiltros.Text = "Filtros";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(label2, "label2");
+            label2.Name = "label2";
+            // 
+            // btnBaixarSemEscolha
+            // 
+            resources.ApplyResources(btnBaixarSemEscolha, "btnBaixarSemEscolha");
+            btnBaixarSemEscolha.Name = "btnBaixarSemEscolha";
+            btnBaixarSemEscolha.UseVisualStyleBackColor = true;
+            btnBaixarSemEscolha.Click += btnBaixarSemEscolha_Click;
             // 
             // btnBaixarComEscolha
             // 
-            btnBaixarComEscolha.Location = new Point(90, 81);
+            resources.ApplyResources(btnBaixarComEscolha, "btnBaixarComEscolha");
             btnBaixarComEscolha.Name = "btnBaixarComEscolha";
-            btnBaixarComEscolha.Size = new Size(75, 58);
-            btnBaixarComEscolha.TabIndex = 5;
-            btnBaixarComEscolha.Text = "Baixar";
             btnBaixarComEscolha.UseVisualStyleBackColor = true;
             btnBaixarComEscolha.Click += button1_Click;
             // 
             // progressBar1
             // 
-            progressBar1.Location = new Point(50, 308);
+            resources.ApplyResources(progressBar1, "progressBar1");
             progressBar1.Name = "progressBar1";
-            progressBar1.Size = new Size(796, 23);
-            progressBar1.TabIndex = 6;
             // 
             // listBox1
             // 
+            resources.ApplyResources(listBox1, "listBox1");
             listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(480, 76);
             listBox1.Name = "listBox1";
-            listBox1.Size = new Size(366, 199);
-            listBox1.TabIndex = 7;
             // 
-            // btnBaixarSemEscolha
+            // arquivoToolStripMenuItem
             // 
-            btnBaixarSemEscolha.Location = new Point(171, 81);
-            btnBaixarSemEscolha.Name = "btnBaixarSemEscolha";
-            btnBaixarSemEscolha.Size = new Size(80, 58);
-            btnBaixarSemEscolha.TabIndex = 8;
-            btnBaixarSemEscolha.Text = "Melhor Resolução";
-            btnBaixarSemEscolha.UseVisualStyleBackColor = true;
-            btnBaixarSemEscolha.Click += btnBaixarSemEscolha_Click;
+            resources.ApplyResources(arquivoToolStripMenuItem, "arquivoToolStripMenuItem");
+            arquivoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { sairToolStripMenuItem });
+            arquivoToolStripMenuItem.Name = "arquivoToolStripMenuItem";
+            // 
+            // sairToolStripMenuItem
+            // 
+            resources.ApplyResources(sairToolStripMenuItem, "sairToolStripMenuItem");
+            sairToolStripMenuItem.Name = "sairToolStripMenuItem";
+            sairToolStripMenuItem.Click += sairToolStripMenuItem_Click;
+            // 
+            // menuStrip1
+            // 
+            resources.ApplyResources(menuStrip1, "menuStrip1");
+            menuStrip1.Items.AddRange(new ToolStripItem[] { arquivoToolStripMenuItem });
+            menuStrip1.Name = "menuStrip1";
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(901, 450);
             Controls.Add(listBox1);
             Controls.Add(progressBar1);
             Controls.Add(groupFiltros);
             Controls.Add(btnAnalisar);
             Controls.Add(label1);
             Controls.Add(txtLink);
+            Controls.Add(menuStrip1);
+            MainMenuStrip = menuStrip1;
             Name = "Form1";
-            Text = "Form1";
             groupFiltros.ResumeLayout(false);
+            groupFiltros.PerformLayout();
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -151,5 +159,9 @@
         private ProgressBar progressBar1;
         private ListBox listBox1;
         private Button btnBaixarSemEscolha;
+        private Label label2;
+        private ToolStripMenuItem arquivoToolStripMenuItem;
+        private ToolStripMenuItem sairToolStripMenuItem;
+        private MenuStrip menuStrip1;
     }
 }

@@ -13,7 +13,9 @@ namespace AVyoutube
         private string url_verificada = null;
         public Form1()
         {
+            this.title = "";
             InitializeComponent();
+            cmbResolucao.DropDownStyle = ComboBoxStyle.DropDownList;
             bool ytdlp = Video.verificar("yt-dlp");
             bool ffmpeg = Video.verificar("ffmpeg -i"); //Ffmpeg retornou apenas 1, colocado a flag -i resolve o problema
             msg = "O executável não foi encontrado no seu sistema, \n verifique se foi adicionado corretamente as variáveis de ambiente";
@@ -64,7 +66,7 @@ namespace AVyoutube
             }
             url_verificada = url;
             video = new Video(url_verificada);
-            video.listarFormatos(cmbResolucao);
+            video.listarFormatos(cmbResolucao, listBox1);
             MessageBox.Show("URL ok");
             cmbResolucao.SelectedIndex = 0;
         }
@@ -79,7 +81,7 @@ namespace AVyoutube
             if (url_verificada != null)
             {
                 video = new Video(url_verificada);
-                video.baixarMelhorFormato(listBox1);
+                video.baixarMelhorFormato(listBox1, progressBar1);
             }
             else
             {
@@ -94,6 +96,22 @@ namespace AVyoutube
             if (url_verificada != null)
             {
                 video = new Video(url_verificada);
+                foreach (KeyValuePair<string, string> valor in Video.Dicionario)
+                {
+                        if (cmbResolucao.SelectedItem != null && valor.Key == cmbResolucao.SelectedItem.ToString() )
+                        {
+                            video.baixarFormatoSelecionado(valor.Value);
+                            return;
+                        } 
+                        else
+                        {
+                            icon = MessageBoxIcon.Error;
+                            buttons = MessageBoxButtons.OK;
+                            MessageBox.Show("Nenhuma resolução foi selecionado", "Sem dados", buttons, icon);
+                            return;
+                        }
+                }
+
             }
             else
             {
@@ -104,6 +122,11 @@ namespace AVyoutube
         public void limpar_cmbBox()
         {
             cmbResolucao.Items.Clear();
+        }
+
+        private void sairToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
