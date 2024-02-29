@@ -42,6 +42,7 @@
             arquivoToolStripMenuItem = new ToolStripMenuItem();
             sairToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1 = new MenuStrip();
+            lblStatus = new Label();
             groupFiltros.SuspendLayout();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -127,10 +128,16 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { arquivoToolStripMenuItem });
             menuStrip1.Name = "menuStrip1";
             // 
+            // lblStatus
+            // 
+            resources.ApplyResources(lblStatus, "lblStatus");
+            lblStatus.Name = "lblStatus";
+            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(lblStatus);
             Controls.Add(listBox1);
             Controls.Add(progressBar1);
             Controls.Add(groupFiltros);
@@ -163,5 +170,6 @@
         private ToolStripMenuItem arquivoToolStripMenuItem;
         private ToolStripMenuItem sairToolStripMenuItem;
         private MenuStrip menuStrip1;
+        private Label lblStatus;
     }
 }

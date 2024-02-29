@@ -66,14 +66,17 @@ namespace AVyoutube
             }
             url_verificada = url;
             video = new Video(url_verificada);
+            lblStatus.Text = "Status: Aguarde";
+            lblStatus.ForeColor = Color.Gray;
+            Cursor = Cursors.WaitCursor;
             video.listarFormatos(cmbResolucao, listBox1);
-            MessageBox.Show("URL ok");
-            cmbResolucao.SelectedIndex = 0;
-        }
-
-        private void rbmAV1_CheckedChanged(object sender, EventArgs e)
-        {
-
+            Cursor = Cursors.Default;
+            lblStatus.Text = "Status: Finalizado";
+            lblStatus.ForeColor = Color.Blue;
+            if (cmbResolucao.SelectedIndex != -1)
+            {
+                cmbResolucao.SelectedIndex = 0;
+            }
         }
 
         private void btnBaixarSemEscolha_Click(object sender, EventArgs e)
@@ -100,17 +103,14 @@ namespace AVyoutube
                 {
                         if (cmbResolucao.SelectedItem != null && valor.Key == cmbResolucao.SelectedItem.ToString() )
                         {
-                            video.baixarFormatoSelecionado(valor.Value);
+                            video.baixarFormatoSelecionado(listBox1, progressBar1, valor.Value);
                             return;
                         } 
-                        else
-                        {
-                            icon = MessageBoxIcon.Error;
-                            buttons = MessageBoxButtons.OK;
-                            MessageBox.Show("Nenhuma resolução foi selecionado", "Sem dados", buttons, icon);
-                            return;
-                        }
                 }
+                icon = MessageBoxIcon.Error;
+                buttons = MessageBoxButtons.OK;
+                MessageBox.Show("Nenhuma resolução foi selecionado", "Sem dados", buttons, icon);
+                return;
 
             }
             else
