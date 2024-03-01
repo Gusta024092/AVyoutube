@@ -80,11 +80,14 @@ namespace AVyoutube
                 UseShellExecute = false,
                 CreateNoWindow = true
             };
-            Task.Run(() =>
-            {
-                btnAnalisar.BeginInvoke((MethodInvoker)(() => btnAnalisar.Enabled = false));
+            //Task.Run(() =>
+            //{
+                /*btnAnalisar.BeginInvoke((MethodInvoker)(() => btnAnalisar.Enabled = false));
                 btnComEscolha.BeginInvoke((MethodInvoker)(() => btnComEscolha.Enabled = false));
-                btnSemEscolha.BeginInvoke((MethodInvoker)(() => btnSemEscolha.Enabled = false));
+                btnSemEscolha.BeginInvoke((MethodInvoker)(() => btnSemEscolha.Enabled = false));*/
+                btnAnalisar.Enabled = true;
+                btnComEscolha.Enabled = true;
+                btnSemEscolha.Enabled = true;
 
 
                 using (processo = new Process())
@@ -133,12 +136,15 @@ namespace AVyoutube
                     processo.WaitForExit();
                     if (processo.ExitCode == 0)
                     {
-                        btnAnalisar.BeginInvoke((MethodInvoker)(() => btnAnalisar.Enabled = true));
+                        /*btnAnalisar.BeginInvoke((MethodInvoker)(() => btnAnalisar.Enabled = true));
                         btnComEscolha.BeginInvoke((MethodInvoker)(() => btnComEscolha.Enabled = true));
-                        btnSemEscolha.BeginInvoke((MethodInvoker)(() => btnSemEscolha.Enabled = true));
+                        btnSemEscolha.BeginInvoke((MethodInvoker)(() => btnSemEscolha.Enabled = true));*/
+                        btnAnalisar.Enabled = true;
+                        btnComEscolha.Enabled = true;
+                        btnSemEscolha.Enabled = true;
                     }
                 }
-            });
+            //});
         }
 
         //Metodo para formato selecionado

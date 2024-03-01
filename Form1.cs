@@ -72,25 +72,20 @@ namespace AVyoutube
             lblStatus.Text = "Status: Aguarde";
             lblStatus.ForeColor = Color.Gray;
             Cursor = Cursors.WaitCursor;
-            var tarefa = Task.Run(() => video.listarFormatos(cmbResolucao, lista_botoes));
-            var tarefa_completa = tarefa.ContinueWith(t =>
+            await Task.Run(() => video.listarFormatos(cmbResolucao, lista_botoes));
+            Cursor = Cursors.Default;
+            if (cmbResolucao.Items.Count > 0)
             {
-                Cursor = Cursors.Default;
-                if (cmbResolucao.Items.Count > 0)
-                {
-                    lblStatus.Text = "Status: Finalizado";
-                    lblStatus.ForeColor = Color.Blue;
-                    cmbResolucao.SelectedIndex = 0;
-                }
-                else
-                {
-                    lblStatus.Text = "Status: Erro na busca";
-                    lblStatus.ForeColor = Color.Red;
-                }
-            });
+                lblStatus.Text = "Status: Finalizado";
+                lblStatus.ForeColor = Color.Blue;
+                cmbResolucao.SelectedIndex = 0;
+            }
+            else
+            {
+                lblStatus.Text = "Status: Erro na busca";
+                lblStatus.ForeColor = Color.Red;
+            }
         }
-
-        await tarefa_completa;
 
         private void btnBaixarSemEscolha_Click(object sender, EventArgs e)
         {
