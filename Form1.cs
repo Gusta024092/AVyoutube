@@ -1,5 +1,6 @@
 using System;
 using System.Security.Policy;
+using System.Threading.Tasks;
 
 namespace AVyoutube
 {
@@ -11,9 +12,9 @@ namespace AVyoutube
         private string msg = "";
         private string title = "";
         private string url_verificada = null;
+        private List<Button> lista_botoes = new List<Button>();
         public Form1()
         {
-            this.title = "";
             InitializeComponent();
             cmbResolucao.DropDownStyle = ComboBoxStyle.DropDownList;
             bool ytdlp = Video.verificar("yt-dlp");
@@ -31,7 +32,9 @@ namespace AVyoutube
                 title = "Falha ao encontrar ffmpeg";
                 MessageBox.Show(msg, title, buttons, icon);
             }
-
+            lista_botoes.Add(btnAnalisar);
+            lista_botoes.Add(btnBaixarComEscolha);
+            lista_botoes.Add(btnBaixarSemEscolha);
         }
 
         private string verificarUrl()
@@ -56,7 +59,7 @@ namespace AVyoutube
             return url;
         }
 
-        private void btnAnalisar_Click(object sender, EventArgs e)
+        private async void btnAnalisar_Click(object sender, EventArgs e)
         {
             limpar_cmbBox();
             string url = verificarUrl();
@@ -69,28 +72,43 @@ namespace AVyoutube
             lblStatus.Text = "Status: Aguarde";
             lblStatus.ForeColor = Color.Gray;
             Cursor = Cursors.WaitCursor;
-            video.listarFormatos(cmbResolucao, listBox1);
-            Cursor = Cursors.Default;
-            lblStatus.Text = "Status: Finalizado";
-            lblStatus.ForeColor = Color.Blue;
-            if (cmbResolucao.SelectedIndex != -1)
+            var tarefa = Task.Run(() => video.listarFormatos(cmbResolucao, lista_botoes));
+            var tarefa_completa = tarefa.ContinueWith(t =>
             {
-                cmbResolucao.SelectedIndex = 0;
-            }
+                Cursor = Cursors.Default;
+                if (cmbResolucao.Items.Count > 0)
+                {
+                    lblStatus.Text = "Status: Finalizado";
+                    lblStatus.ForeColor = Color.Blue;
+                    cmbResolucao.SelectedIndex = 0;
+                }
+                else
+                {
+                    lblStatus.Text = "Status: Erro na busca";
+                    lblStatus.ForeColor = Color.Red;
+                }
+            });
         }
+
+        await tarefa_completa;
 
         private void btnBaixarSemEscolha_Click(object sender, EventArgs e)
         {
             if (url_verificada != null)
             {
                 video = new Video(url_verificada);
-                video.baixarMelhorFormato(listBox1, progressBar1);
+                video.baixarMelhorFormato(lblProcesso1, progressBar1);
             }
             else
             {
-                MessageBox.Show("Insira a URL que deseja baixar");
+                sem_Links();
             }
 
+        }
+
+        private void sem_Links()
+        {
+            MessageBox.Show("Insira a URL que deseja baixar", "Sem url na buscar", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         //Botao para baixar com base na escolha
@@ -101,11 +119,11 @@ namespace AVyoutube
                 video = new Video(url_verificada);
                 foreach (KeyValuePair<string, string> valor in Video.Dicionario)
                 {
-                        if (cmbResolucao.SelectedItem != null && valor.Key == cmbResolucao.SelectedItem.ToString() )
-                        {
-                            video.baixarFormatoSelecionado(listBox1, progressBar1, valor.Value);
-                            return;
-                        } 
+                    if (cmbResolucao.SelectedItem != null && valor.Key == cmbResolucao.SelectedItem.ToString())
+                    {
+                        video.baixarFormatoSelecionado(lblProcesso1, progressBar1, valor.Value);
+                        return;
+                    }
                 }
                 icon = MessageBoxIcon.Error;
                 buttons = MessageBoxButtons.OK;
@@ -115,7 +133,7 @@ namespace AVyoutube
             }
             else
             {
-                MessageBox.Show("Insira a URL que deseja baixar");
+                sem_Links();
             }
         }
 
@@ -127,6 +145,11 @@ namespace AVyoutube
         private void sairToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        {
+            //
         }
     }
 }

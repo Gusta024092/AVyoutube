@@ -18,3 +18,4 @@ C:\Users\Gustavo\source\repos\AVyoutube\obj\Debug\net8.0-windows\AVyoutube.sourc
 C:\Users\Gustavo\source\repos\AVyoutube\bin\Debug\net8.0-windows\pt-BR\AVyoutube.resources.dll
 C:\Users\Gustavo\source\repos\AVyoutube\obj\Debug\net8.0-windows\AVyoutube.Form1.pt-BR.resources
 C:\Users\Gustavo\source\repos\AVyoutube\obj\Debug\net8.0-windows\pt-BR\AVyoutube.resources.dll
+C:\Users\Gustavo\source\repos\AVyoutube\obj\Debug\net8.0-windows\AVyoutube.Properties.Resources.resources

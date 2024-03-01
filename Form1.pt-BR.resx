@@ -118,32 +118,186 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="listBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>612, 199</value>
+  <data name="progressBar1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 25</value>
+  </data>
+  <data name="progressBar1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>752, 42</value>
   </data>
   <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1104, 24</value>
+    <value>779, 24</value>
+  </data>
+  <data name="sobreToolStripMenuItem.Text" xml:space="preserve">
+    <value>Sobre</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="tableLayoutPanel2.ColumnCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tableLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 221</value>
+  </data>
+  <data name="tableLayoutPanel2.RowCount" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>758, 70</value>
+  </data>
+  <data name="lblProcesso1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lblProcesso1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblProcesso1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 15</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>750, 77</value>
+  </data>
+  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 15.75pt</value>
+  </data>
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 16</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 30</value>
+  </data>
+  <data name="txtLink.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Narrow, 12pt</value>
+  </data>
+  <data name="txtLink.Location" type="System.Drawing.Point, System.Drawing">
+    <value>67, 20</value>
+  </data>
+  <data name="txtLink.Size" type="System.Drawing.Size, System.Drawing">
+    <value>325, 26</value>
+  </data>
   <data name="lblStatus.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="lblStatus.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Emoji, 12pt, style=Bold</value>
+  </data>
+  <data name="lblStatus.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="lblStatus.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 76</value>
+    <value>474, 23</value>
   </data>
   <data name="lblStatus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 15</value>
-  </data>
-  <data name="lblStatus.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+    <value>68, 21</value>
   </data>
   <data name="lblStatus.Text" xml:space="preserve">
     <value>Status: </value>
   </data>
+  <data name="btnAnalisar.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAuNJREFUSEuN
+        VM9rWkEQzj8TJIcgaEpOokIgB08e1EPAQIm9xou35CL5C4L/QCkIDW0hOYjHFHuQXtoUVCy0zUEQpVAo
+        TUP1OdP9xp2Xfc9Xmw/GmZ3dNz++nXXD8zwGoCFEJGto3VNb9/Rs2AbCextiGajz/v43X1xccLlc5mQy
+        ybFYjHd3d7lSqXCr1eLFYrEScB0CHQyHQ97f3+fNzU3O5XJcr9f5/PycT05OKJvNkvFTqVSi0Wi0bMUi
+        nNAVP0G/3+edJzucSqW40+m4FBmTeD6f8+XlJScSCU6n0zydTiWJBoqCJIAxm/2RyhF8PB7LpgOtFpoG
+        gwHF43E+PDwMdKHQhBAUJgnAOWhB5RFwEwiazSbOU7fbtZ5/QyjChYJz2BEIdABBx2YAyNyNbLhQav0O
+        YGBacKH/SRDA0dER5fN5u3qAGwO2UIRRxLSsgV+9Sq1W4729PWOuh3SAOT89PbWux8FcMhcKBbt6QBRF
+        hEeEOccoWigtbtWA2Hd3v2h7e5vOzs58nxUE9tewQRG1222ZiqurKzkEX0grZN1oNOR8r9fzfapN1Qj8
+        0AEcs9mMi8UimUckc66HHa0gjPLW1hZXq1X3jHtO1yJCEbzmgRFeqHlEZOZcRtEeEhhaUDkhON5MJpMh
+        85rZW8z0jGit3gpJB7qYTCZyeWgfo4tRNNNCeLWGc/GjcgQ/rh7T7eQ9v7g+oJvbN34Cq0UkgbhCwAvF
+        I8KcYxQxLbhQyzn+h1iCvz3g59clkU/LJCuQMVUgo1GuRMLQIpVrcCuEJBoPGgKK/AXokt1HwNCykgD6
+        49dXgSRhijSB24HargCoGEE1kdrSiSLQgRH9GPADrdM2id+BanvxwTswwEciSGb3JJAmB43wWzrl3M23
+        1ysJXr57tqQIP64oXBvQdVgDsEGLTcDNzlP+/vOL+CPHVBEOEqUBtT+YC0bl0x+fZQ34FEGHP4ra0ztb
+        MrTcU1v39KznefwXepkZUuaSMPEAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="btnAnalisar.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="btnAnalisar.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 12pt</value>
+  </data>
+  <data name="btnAnalisar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnAnalisar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>398, 16</value>
+  </data>
+  <data name="btnAnalisar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 34</value>
+  </data>
+  <data name="btnAnalisar.Text" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 12pt</value>
+  </data>
+  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 36</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 21</value>
+  </data>
+  <data name="btnBaixarSemEscolha.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 12pt</value>
+  </data>
+  <data name="btnBaixarSemEscolha.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnBaixarSemEscolha.Location" type="System.Drawing.Point, System.Drawing">
+    <value>465, 16</value>
+  </data>
+  <data name="btnBaixarSemEscolha.Text" xml:space="preserve">
+    <value>Baixar Predefinição</value>
+  </data>
+  <data name="cmbResolucao.Location" type="System.Drawing.Point, System.Drawing">
+    <value>88, 33</value>
+  </data>
+  <data name="cmbResolucao.Size" type="System.Drawing.Size, System.Drawing">
+    <value>252, 28</value>
+  </data>
+  <data name="btnBaixarComEscolha.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 12pt</value>
+  </data>
+  <data name="btnBaixarComEscolha.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnBaixarComEscolha.Location" type="System.Drawing.Point, System.Drawing">
+    <value>346, 16</value>
+  </data>
+  <data name="groupFiltros.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 11.25pt, style=Bold</value>
+  </data>
+  <data name="groupFiltros.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 90</value>
+  </data>
+  <data name="groupFiltros.Size" type="System.Drawing.Size, System.Drawing">
+    <value>750, 82</value>
+  </data>
+  <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 27</value>
+  </data>
+  <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>758, 175</value>
+  </data>
+  <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1104, 450</value>
+    <value>779, 318</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Início</value>
+    <value>BETA - *29022024*</value>
   </data>
 </root>

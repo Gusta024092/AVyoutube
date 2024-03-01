@@ -9,6 +9,11 @@
       "AVyoutube/1.0.0": {
         "runtime": {
           "AVyoutube.dll": {}
+        },
+        "resources": {
+          "pt-BR/AVyoutube.resources.dll": {
+            "locale": "pt-BR"
+          }
         }
       }
     }
