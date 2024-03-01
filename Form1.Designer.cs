@@ -47,6 +47,7 @@
             cmbResolucao = new ComboBox();
             btnBaixarComEscolha = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
+            oProjetoToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -80,6 +81,7 @@
             // sobreToolStripMenuItem
             // 
             resources.ApplyResources(sobreToolStripMenuItem, "sobreToolStripMenuItem");
+            sobreToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { oProjetoToolStripMenuItem });
             sobreToolStripMenuItem.Name = "sobreToolStripMenuItem";
             // 
             // tableLayoutPanel2
@@ -173,6 +175,11 @@
             tableLayoutPanel1.Controls.Add(groupFiltros, 0, 1);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
+            // oProjetoToolStripMenuItem
+            // 
+            resources.ApplyResources(oProjetoToolStripMenuItem, "oProjetoToolStripMenuItem");
+            oProjetoToolStripMenuItem.Name = "oProjetoToolStripMenuItem";
+            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
@@ -215,5 +222,6 @@
         private Label lblProcesso1;
         private TableLayoutPanel tableLayoutPanel1;
         private ToolStripMenuItem sobreToolStripMenuItem;
+        private ToolStripMenuItem oProjetoToolStripMenuItem;
     }
 }

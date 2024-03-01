@@ -13,8 +13,6 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 namespace AVyoutube
 {
     public class Video {
-        private static int nextID = 1;
-        public static int NextID { get { return nextID; } }
         private string url;
         public string Url { get { return url; } set { url = value; } }
         private static Dictionary<string, string> dicionario = new Dictionary<string, string>();
@@ -41,7 +39,6 @@ namespace AVyoutube
         public Video(string url) 
         {
             this.url = url;
-            nextID += 1;
         }
 
         private string resolucao_formatada(string formato)
@@ -56,10 +53,34 @@ namespace AVyoutube
             return "Desconhecido";
         }
 
-        //Lista e add para combobox
-        public void listarFormatos(System.Windows.Forms.ComboBox cmb, List<System.Windows.Forms.Button> botoes)
+        private void progressoDownload(Label lblProcesso, System.Windows.Forms.ProgressBar progress, string dados)
         {
-            listar(cmb, botoes);
+
+            match = Regex.Match(dados, @"\b\d+(?:\.\d+)?");
+            int parteInteira = 0;
+            string[] pedacos = null;
+            if (match.Success)
+            {
+                pedacos = match.Value.Split('.');
+                parteInteira = int.Parse(pedacos[0]);
+                progress.BeginInvoke((MethodInvoker)(() => progress.Value = parteInteira));
+                if (parteInteira == 100)
+                {
+                    verificacao += 1;
+                }
+            }
+            if (verificacao == 2)
+            {
+                lblProcesso.BeginInvoke((MethodInvoker)(() => lblProcesso.Text = "Baixando Áudio...  " + parteInteira.ToString() + "%"));
+            }
+            else if (verificacao == 4)
+            {
+                lblProcesso.BeginInvoke((MethodInvoker)(() => lblProcesso.Text = "Concluído"));
+            }
+            else
+            {
+                lblProcesso.BeginInvoke((MethodInvoker)(() => lblProcesso.Text = "Baixando Video...  " + parteInteira.ToString() + "%"));
+            }
         }
 
         private void listar(System.Windows.Forms.ComboBox cmb, List<System.Windows.Forms.Button> botoes)
@@ -67,24 +88,14 @@ namespace AVyoutube
             System.Windows.Forms.Button btnAnalisar = botoes[0];
             System.Windows.Forms.Button btnSemEscolha = botoes[1];
             System.Windows.Forms.Button btnComEscolha = botoes[2];
-
-            
             dicionario.Clear();
             comando_cmd = "yt-dlp " + this.url + " -F";
-            inicioProcesso = new ProcessStartInfo
-            {
-                FileName = "cmd.exe",
-                Arguments = $"/C {comando_cmd}",
-                RedirectStandardOutput = true,
-                RedirectStandardError = true,
-                UseShellExecute = false,
-                CreateNoWindow = true
-            };
+            inicioProcesso = parametrosTerminal(comando_cmd);
             //Task.Run(() =>
             //{
-                /*btnAnalisar.BeginInvoke((MethodInvoker)(() => btnAnalisar.Enabled = false));
-                btnComEscolha.BeginInvoke((MethodInvoker)(() => btnComEscolha.Enabled = false));
-                btnSemEscolha.BeginInvoke((MethodInvoker)(() => btnSemEscolha.Enabled = false));*/
+            /*btnAnalisar.BeginInvoke((MethodInvoker)(() => btnAnalisar.Enabled = false));
+            btnComEscolha.BeginInvoke((MethodInvoker)(() => btnComEscolha.Enabled = false));
+            btnSemEscolha.BeginInvoke((MethodInvoker)(() => btnSemEscolha.Enabled = false));*/
                 btnAnalisar.Enabled = true;
                 btnComEscolha.Enabled = true;
                 btnSemEscolha.Enabled = true;
@@ -99,32 +110,29 @@ namespace AVyoutube
 
                     processo.OutputDataReceived += (sender, e) =>
                     {
-                        if (e.Data != null && Regex.IsMatch(e.Data, @"^\d{3}"))
-                        {
-                            if (!formatos_ignorados.Any(formato => e.Data.Contains(formato)))
-                            {
-                                if (e.Data.Contains("avc1"))
-                                {
-                                    foreach (string resolucao in formatos_resolucao_listados)
-                                    {
-                                        if (e.Data.Contains(resolucao))
-                                        {
-                                            // Verifica linha processada e evita o risco mencionado
-                                            if (!linhasProcessadas.Contains(e.Data))
-                                            {
-                                                string res = resolucao_formatada(resolucao);
-                                                cmb.BeginInvoke((MethodInvoker)(() => cmb.Items.Add(res)));
-                                                linhasProcessadas.Add(e.Data); // Adiciona a linha à lista de linhas processadas
+                        if (e.Data == null || !Regex.IsMatch(e.Data, @"^\d{3}") || formatos_ignorados.Any(formato => e.Data.Contains(formato)))
+                            return;
 
-                                                video_id = Regex.Match(e.Data, @"\d{3}");
-                                                if (video_id.Success)
-                                                {
-                                                    dicionario[res] = video_id.Value;
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
+                        if (!e.Data.Contains("avc1"))
+                            return;
+
+                        foreach (string resolucao in formatos_resolucao_listados)
+                        {
+                            if (!e.Data.Contains(resolucao))
+                                continue;
+
+                            // Verifica linha processada e evita o risco mencionado
+                            if (linhasProcessadas.Contains(e.Data))
+                                continue;
+
+                            string res = resolucao_formatada(resolucao);
+                            cmb.BeginInvoke((MethodInvoker)(() => cmb.Items.Add(res)));
+                            linhasProcessadas.Add(e.Data); // Adiciona a linha à lista de linhas processadas
+
+                            video_id = Regex.Match(e.Data, @"\d{3}");
+                            if (video_id.Success)
+                            {
+                                dicionario[res] = video_id.Value;
                             }
                         }
                     };
@@ -147,33 +155,26 @@ namespace AVyoutube
             //});
         }
 
-        //Metodo para formato selecionado
-        public void baixarFormatoSelecionado(Label lblProcesso, System.Windows.Forms.ProgressBar progress, string video_id)
+        private ProcessStartInfo parametrosTerminal(string args)
         {
-            comando_cmd = "yt-dlp " + this.url + " -f " + video_id + "+251";
-            baixar(lblProcesso, progress, comando_cmd);
-        }
-
-        //Nao mexe mais nesse metodo
-        public void baixarMelhorFormato(Label lblProcesso, System.Windows.Forms.ProgressBar progress)
-        {
-            comando_cmd = "yt-dlp " + this.url;
-            baixar(lblProcesso, progress, comando_cmd);
-        }
-
-        private void baixar(Label lblProcesso, System.Windows.Forms.ProgressBar progress, string comando_cmd)
-        {
-            verificacao = 0;
             inicioProcesso = new ProcessStartInfo
             {
                 FileName = "cmd.exe",
-                Arguments = $"/C {comando_cmd}",
+                Arguments = $"/C {args}",
                 RedirectStandardOutput = true,
                 RedirectStandardError = true,
                 UseShellExecute = false,
                 CreateNoWindow = true
             };
 
+            return inicioProcesso;
+        }
+
+        private void baixar(Label lblProcesso, System.Windows.Forms.ProgressBar progress, string comando_cmd)
+        {
+            lblProcesso.Text = "Aguarde... ";
+            verificacao = 0;
+            inicioProcesso = parametrosTerminal(comando_cmd);
             //Aloca este algoritmo para um outro processo
             Task.Run(() =>
             {
@@ -209,38 +210,19 @@ namespace AVyoutube
                 }
             });
         }
-
-        private void progressoDownload(Label lblProcesso, System.Windows.Forms.ProgressBar progress, string dados)
+        //Metodo para formato selecionado
+        public void baixarFormatoSelecionado(Label lblProcesso, System.Windows.Forms.ProgressBar progress, string video_id)
         {
-            
-            match = Regex.Match(dados, @"\b\d+(?:\.\d+)?");
-            int parteInteira = 0;
-            string[] pedacos = null;
-            if (match.Success)
-            {
-                pedacos = match.Value.Split('.');
-                parteInteira = int.Parse(pedacos[0]);
-                progress.BeginInvoke((MethodInvoker)(() => progress.Value = parteInteira));
-                if (parteInteira == 100)
-                {
-                    verificacao += 1;
-                    MessageBox.Show(verificacao.ToString());
-                }
-            }
-            if (verificacao == 2)
-            {
-                lblProcesso.BeginInvoke((MethodInvoker)(() => lblProcesso.Text = "Baixando Áudio...  " + parteInteira.ToString() + "%"));
-            }
-            else if (verificacao == 4)
-            {
-                lblProcesso.BeginInvoke((MethodInvoker)(() => lblProcesso.Text = "Concluído"));
-            }
-            else
-            {
-                lblProcesso.BeginInvoke((MethodInvoker)(() => lblProcesso.Text = "Baixando Video...  " + parteInteira.ToString() + "%"));
-            }
+            comando_cmd = "yt-dlp " + this.url + " -f " + video_id + "+251";
+            baixar(lblProcesso, progress, comando_cmd);
         }
-
+        //Nao mexe mais nesse metodo
+        public void baixarMelhorFormato(Label lblProcesso, System.Windows.Forms.ProgressBar progress)
+        {
+            comando_cmd = "yt-dlp " + this.url;
+            baixar(lblProcesso, progress, comando_cmd);
+        }
+        //Método estático
         public static bool verificar(string executavel)
         {
             try
@@ -264,7 +246,11 @@ namespace AVyoutube
             {
                 return false;
             }
-
+        }
+        //Lista e add para combobox
+        public void listarFormatos(System.Windows.Forms.ComboBox cmb, List<System.Windows.Forms.Button> botoes)
+        {
+            listar(cmb, botoes);
         }
     }
 }

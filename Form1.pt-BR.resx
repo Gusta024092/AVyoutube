@@ -124,24 +124,24 @@
   <data name="progressBar1.Size" type="System.Drawing.Size, System.Drawing">
     <value>752, 42</value>
   </data>
-  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>779, 24</value>
+  <data name="sairToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="oProjetoToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="oProjetoToolStripMenuItem.Text" xml:space="preserve">
+    <value>O projeto</value>
   </data>
   <data name="sobreToolStripMenuItem.Text" xml:space="preserve">
     <value>Sobre</value>
   </data>
+  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>779, 24</value>
+  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="tableLayoutPanel2.ColumnCount" type="System.Int32, mscorlib">
     <value>1</value>
-  </data>
-  <data name="tableLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 221</value>
-  </data>
-  <data name="tableLayoutPanel2.RowCount" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>758, 70</value>
   </data>
   <data name="lblProcesso1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -153,8 +153,14 @@
   <data name="lblProcesso1.Size" type="System.Drawing.Size, System.Drawing">
     <value>0, 15</value>
   </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>750, 77</value>
+  <data name="tableLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 221</value>
+  </data>
+  <data name="tableLayoutPanel2.RowCount" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>758, 70</value>
   </data>
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 15.75pt</value>
@@ -231,6 +237,9 @@
   <data name="btnAnalisar.Text" xml:space="preserve">
     <value> </value>
   </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>750, 77</value>
+  </data>
   <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 12pt</value>
   </data>
@@ -298,6 +307,6 @@
     <value>779, 318</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>BETA - *29022024*</value>
+    <value>BETA - *01032024*</value>
   </data>
 </root>

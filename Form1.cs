@@ -89,7 +89,7 @@ namespace AVyoutube
 
         private void btnBaixarSemEscolha_Click(object sender, EventArgs e)
         {
-            if (url_verificada != null)
+            if (url_verificada != null && cmbResolucao.Items.Count > 0)
             {
                 video = new Video(url_verificada);
                 video.baixarMelhorFormato(lblProcesso1, progressBar1);
@@ -103,7 +103,7 @@ namespace AVyoutube
 
         private void sem_Links()
         {
-            MessageBox.Show("Insira a URL que deseja baixar", "Sem url na buscar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show("Insira a URL que deseja baixar", "Sem url na busca", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         //Botao para baixar com base na escolha
