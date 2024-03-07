@@ -34,6 +34,7 @@
             sairToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1 = new MenuStrip();
             sobreToolStripMenuItem = new ToolStripMenuItem();
+            oProjetoToolStripMenuItem = new ToolStripMenuItem();
             tableLayoutPanel2 = new TableLayoutPanel();
             lblProcesso1 = new Label();
             groupBox1 = new GroupBox();
@@ -47,7 +48,6 @@
             cmbResolucao = new ComboBox();
             btnBaixarComEscolha = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
-            oProjetoToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -83,6 +83,11 @@
             resources.ApplyResources(sobreToolStripMenuItem, "sobreToolStripMenuItem");
             sobreToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { oProjetoToolStripMenuItem });
             sobreToolStripMenuItem.Name = "sobreToolStripMenuItem";
+            // 
+            // oProjetoToolStripMenuItem
+            // 
+            resources.ApplyResources(oProjetoToolStripMenuItem, "oProjetoToolStripMenuItem");
+            oProjetoToolStripMenuItem.Name = "oProjetoToolStripMenuItem";
             // 
             // tableLayoutPanel2
             // 
@@ -174,11 +179,6 @@
             tableLayoutPanel1.Controls.Add(groupBox1, 0, 0);
             tableLayoutPanel1.Controls.Add(groupFiltros, 0, 1);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            // 
-            // oProjetoToolStripMenuItem
-            // 
-            resources.ApplyResources(oProjetoToolStripMenuItem, "oProjetoToolStripMenuItem");
-            oProjetoToolStripMenuItem.Name = "oProjetoToolStripMenuItem";
             // 
             // Form1
             // 

@@ -1,14 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
+﻿using System.Diagnostics;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.LinkLabel;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace AVyoutube
 {
@@ -26,13 +17,21 @@ namespace AVyoutube
         {
             "m3u8", "opus", "m4a"
         };
-        private static List<string> formatos_resolucao_listados = new List<string>
+        //Dict de leitura para resolução
+        private static Dictionary<string, string> formatos_resolucao = new Dictionary<string, string>()
         {
-            "x144     15", "x144     24", "x144     30", "x240", "x360", "x480", "x720    24", "x720    30", "x720    60", "x1080   24", "x1080   30", "x1080   60"
-        };
-        private static List<string> formatos_resolucao_legiveis = new List<string>
-        {
-            "144p15", "144p24","144p", "240p", "360p", "480p", "720p24", "720p", "720p60", "1080p24", "1080p", "1080p60"
+            { "144p15", "x144     15" },
+            { "144p24", "x144     24" },
+            { "144p", "x144     30" },
+            { "240p", "x240" },
+            { "360p", "x360" },
+            { "480p", "x480" },
+            { "720p24", "x720    24" },
+            { "720p", "x720    30" },
+            { "720p60", "x720    60" },
+            { "1080p24", "x1080   24" },
+            { "1080p", "x1080   30" },
+            { "1080p60", "x1080   60" }
         };
         private Match match;
 
@@ -43,11 +42,11 @@ namespace AVyoutube
 
         private string resolucao_formatada(string formato)
         {
-            for (int i = 0; i < formatos_resolucao_listados.Count; i++)
+            foreach (var formato_selecionado in formatos_resolucao)
             {
-                if (formato == formatos_resolucao_listados[i])
+                if (formato_selecionado.Value == formato)
                 {
-                    return formatos_resolucao_legiveis[i];
+                    return formato_selecionado.Key;
                 }
             }
             return "Desconhecido";
@@ -116,16 +115,16 @@ namespace AVyoutube
                         if (!e.Data.Contains("avc1"))
                             return;
 
-                        foreach (string resolucao in formatos_resolucao_listados)
+                        foreach (var resolucao in formatos_resolucao)
                         {
-                            if (!e.Data.Contains(resolucao))
+                            if (!e.Data.Contains(resolucao.Value))
                                 continue;
 
                             // Verifica linha processada e evita o risco mencionado
                             if (linhasProcessadas.Contains(e.Data))
                                 continue;
 
-                            string res = resolucao_formatada(resolucao);
+                            string res = resolucao_formatada(resolucao.Value);
                             cmb.BeginInvoke((MethodInvoker)(() => cmb.Items.Add(res)));
                             linhasProcessadas.Add(e.Data); // Adiciona a linha à lista de linhas processadas
 
