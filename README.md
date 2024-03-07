@@ -13,4 +13,6 @@ Aplicação Desktop desenvolvida para ser uma simples e leve Interface Gráfica 
 
 # Sistemas Operacionais Testados
 
-<li>Windows 10 23H2 e superior</li>
+<ul>
+  <li>Windows 10 23H2 e superior</li>
+</ul>
