@@ -9,6 +9,7 @@ namespace AVyoutube
         private string url;
         public string Url { get { return url; } set { url = value; } }
         private static Dictionary<string, string> dicionario = new Dictionary<string, string>();
+        public static Dictionary<string, string> Dicionario { get { return dicionario; } }
         private List<string> lista_url = new List<string>();
         private ProcessStartInfo inicioProcesso;
         private ProcessStartInfo verificar_arquivos;
@@ -180,11 +181,19 @@ namespace AVyoutube
                     processo.StartInfo = verificar_arquivos;
                     processo.OutputDataReceived += (sender, e) =>
                     {
-                        bool existe = File.Exists(Path.Combine(diretorio_aplicativo, e.Data.ToString()));
-                        if (!e.Data.Contains("youtube") &&  existe)
+                        if (e.Data != null)
                         {
-                            //TODO a fazer o verificar arquivo já existente
+                            bool existe = File.Exists(Path.Combine(diretorio_aplicativo, e.Data.ToString()));
+
+                            if (!e.Data.Contains("youtube") && existe)
+                            {
+                                //TODO a fazer o verificar arquivo já existente
+                                MessageBox.Show("Arquivo já existe");
+                                //ChatGPT: Faça este método parar sua execução
+
+                            }
                         }
+                       
                     };
                     processo.Start();
                     processo.BeginOutputReadLine();
